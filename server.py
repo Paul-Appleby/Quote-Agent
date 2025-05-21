@@ -16,6 +16,15 @@ def webhook():
         # Get the request body
         data = request.json
         
+        # Check if this is a clear request
+        if data.get('clear'):
+            latest_webhook_data = None
+            return jsonify({
+                'status': 'success',
+                'message': 'Webhook data cleared',
+                'data_received': False
+            })
+        
         # Log the received data
         print("\n=== Received Webhook Data ===", file=sys.stderr)
         print("Timestamp:", datetime.now().strftime('%Y-%m-%d %H:%M:%S'), file=sys.stderr)
