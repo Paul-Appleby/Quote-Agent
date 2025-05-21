@@ -5,12 +5,6 @@ import json
 
 app = Flask(__name__)
 
-# Directory to store webhook data
-WEBHOOK_DATA_DIR = 'webhook_data'
-
-# Create directory if it doesn't exist
-os.makedirs(WEBHOOK_DATA_DIR, exist_ok=True)
-
 @app.route('/webhook', methods=['POST'])
 def webhook():
     try:
@@ -20,18 +14,21 @@ def webhook():
         # Log the received data
         print("\n=== Received Webhook Data ===")
         print("Timestamp:", datetime.now().strftime('%Y-%m-%d %H:%M:%S'))
-        print("Contact Info:", data.get('contact', {}))
-        print("Conversation Info:", data.get('conversation', {}))
-        print("Custom Variables:", data.get('customVariables', {}))
+        print("Contact Info:", json.dumps(data.get('contact', {}), indent=2))
+        print("Conversation Info:", json.dumps(data.get('conversation', {}), indent=2))
+        print("Custom Variables:", json.dumps(data.get('customVariables', {}), indent=2))
         
         # Save webhook data to a file
         timestamp = datetime.now().strftime('%Y%m%d_%H%M%S')
-        filename = f'{WEBHOOK_DATA_DIR}/webhook_{timestamp}.json'
+        filename = f'webhook_{timestamp}.json'
         
-        with open(filename, 'w') as f:
+        # Use /tmp directory which is writable in cloud environments
+        filepath = os.path.join('/tmp', filename)
+        
+        with open(filepath, 'w') as f:
             json.dump(data, f, indent=2)
         
-        print(f"Saved webhook data to: {filename}")
+        print(f"Saved webhook data to: {filepath}")
         print("===========================\n")
         
         return jsonify({
