@@ -3,8 +3,6 @@ import os
 from datetime import datetime
 import json
 import sys
-import asyncio
-from agent import fieldd_agent, fieldd_browser
 
 app = Flask(__name__)
 
@@ -26,31 +24,9 @@ def webhook():
         # Store the latest webhook data
         latest_webhook_data = data
         
-        # Extract contact info
-        contact_info = data.get('contact', {})
-        customer_data = {
-            'name': contact_info.get('name', ''),
-            'email': contact_info.get('email', ''),
-            'phone': contact_info.get('phone', ''),
-            'address': contact_info.get('address', ''),
-            'service_request': contact_info.get('service_request', '')
-        }
-        
-        # Update Fieldd agent with customer data
-        fieldd_agent.extend_system_message = fieldd_agent.extend_system_message.format(
-            customer_name=customer_data['name'],
-            customer_email=customer_data['email'],
-            customer_phone=customer_data['phone'],
-            customer_address=customer_data['address'],
-            service_request=customer_data['service_request']
-        )
-        
-        # Create the quote
-        asyncio.run(fieldd_agent.run())
-        
         return jsonify({
             'status': 'success',
-            'message': 'Quote created successfully',
+            'message': 'Webhook data received',
             'data_received': True
         })
         
