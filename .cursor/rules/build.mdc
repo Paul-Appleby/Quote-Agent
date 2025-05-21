@@ -1,0 +1,7 @@
+---
+description: 
+globs: 
+alwaysApply: true
+---
+in auto_book, alwasy keep in mind we will be shipping this to many end users, so local functionaity may not be optimal for other users. 
+
