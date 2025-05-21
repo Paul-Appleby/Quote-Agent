@@ -24,8 +24,8 @@ v3
 
 
 
-Gap from ghl to fieldd 
-- Api
+Webhook DAta
+- have all necessary data captured in contact info (use cutom variables in webhook)
 
 PRODUCTION NOTES - IMPORTANT
 - turn off openAI api sharing before deploying
