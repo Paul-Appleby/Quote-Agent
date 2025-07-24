@@ -1,1 +1,1 @@
-web: pip install -r requirements.txt && python quote_bot/server.py 
+web: pip install -r railway-requirements.txt && python quote_bot/server.py 
