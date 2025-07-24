@@ -1,14 +1,21 @@
+<<<<<<< HEAD
 # Environment variables
 .env
 .env.local
 .env.production
 
+=======
+>>>>>>> 6aab433614ef0c1be8d3455f6bda263b07e7b974
 # Python
 __pycache__/
 *.py[cod]
 *$py.class
 *.so
 .Python
+<<<<<<< HEAD
+=======
+env/
+>>>>>>> 6aab433614ef0c1be8d3455f6bda263b07e7b974
 build/
 develop-eggs/
 dist/
@@ -24,6 +31,7 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+<<<<<<< HEAD
 MANIFEST
 
 # Database files
@@ -39,10 +47,23 @@ env/
 ENV/
 env.bak/
 venv.bak/
+=======
+
+# Environment variables
+.env
+
+# Webhook data
+webhook_data/
+
+# Virtual Environment
+venv/
+ENV/
+>>>>>>> 6aab433614ef0c1be8d3455f6bda263b07e7b974
 
 # IDE
 .vscode/
 .idea/
+<<<<<<< HEAD
 *.swp
 *.swo
 *~
@@ -107,3 +128,8 @@ celerybeat.pid
 .mypy_cache/
 .dmypy.json
 dmypy.json 
+=======
+
+.vercel 
+.vercel
+>>>>>>> 6aab433614ef0c1be8d3455f6bda263b07e7b974
